@@ -1,0 +1,130 @@
+{
+  "evm": {
+    "network": "sepolia",
+    "chainId": 11155111,
+    "explorer": "https://sepolia.etherscan.io",
+    "deployedAt": "2026-09-25T13:57:49.097Z",
+    "startBlock": 11779647,
+    "contracts": {
+      "aqua": "0x219F46B2eC62F36617EA11b8dDC8a83b53261e78",
+      "router": "0x1B99c7FE80b670d0d689B0887302A4a156009b20",
+      "authority": "0x2C9292F5fAc8F835CD4d73ee726D7CC3c2E31fFE",
+      "capabilities": "0x501B555BE33c0fCe8c35A9bB15861A8DEA48deD3",
+      "controller": "0x378a11968905265150CAE36237C2f77665F64bcA",
+      "priceFeed": "0xFA99973D4906D7bf24C8E5314417cDc4cA0f3f9d"
+    },
+    "ens": {
+      "rootRegistry": "0x9703DBD26dAB89504490994138cF2c575251a9cE",
+      "ethRegistry": "0x657eA849311d3D5823348ddEd7C2AaAFb3EDE09E",
+      "ethRegistrar": "0xAbe76F6C8DFcEd81AA5A2bB8034202A7136b94ca",
+      "userRegistryImpl": "0xA80338aAA8D23831cEa25E858D1774534aBb0263",
+      "verifiableFactory": "0x9e726Eb570beb6BCEb495AB8cdA7df517d4e841C",
+      "ownerRegistry": "0x6fAFC5b661EEb4D753D6100A5D7881409FD633de",
+      "bucketRegistry": "0x3998B2dfCB77423aBF1f16E2905918caD21b49d0"
+    },
+    "tokens": [
+      {
+        "symbol": "USDC",
+        "address": "0x73569B9eAf403Ca0c1b00b82783F118e6F89A71b",
+        "decimals": 6
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x9C3Fe7Eb69a0F917F9cA32A80a78DCD07d442f4D",
+        "decimals": 18
+      },
+      {
+        "symbol": "SUI",
+        "address": "0xa6017314E82d292c1572eE2095edC34b4c643Fe9",
+        "decimals": 9
+      },
+      {
+        "symbol": "PEPE",
+        "address": "0x6ab4d43e840bE1546C282BF2104fDDcb8bF5DDdB",
+        "decimals": 18
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x9408746500D24A65206311D2245750CF7a67c247",
+        "decimals": 18
+      },
+      {
+        "symbol": "WBTC",
+        "address": "0xd7288ea9Ca4431a7e70aD66d8e288E06aE71d66d",
+        "decimals": 8
+      },
+      {
+        "symbol": "USDT",
+        "address": "0xF1C541B2276D3143154517c52a00e522136D89C6",
+        "decimals": 6
+      },
+      {
+        "symbol": "EURC",
+        "address": "0x3E01031d02b81274FB59cC5070A2E10f8C612C2f",
+        "decimals": 6
+      }
+    ]
+  },
+  "ens": {
+    "ownerName": "shlok.eth",
+    "ownerAddress": "0x04274c7bE78c3A0e7493122E12A97edC11c2eA9e"
+  },
+  "buckets": [
+    {
+      "label": "trading",
+      "ensName": "trading.shlok.eth",
+      "bucketId": "0x8399b07df455fbafb3a192656f49d0f10fdfa7f6507d344d93ad1fe1bb99314f",
+      "holder": "0x04274c7bE78c3A0e7493122E12A97edC11c2eA9e",
+      "capabilities": [
+        {
+          "label": "trading-agent",
+          "nonce": "1",
+          "capabilityId": "0x1678c92f8aa2b268b20f4d0dbe4f1e465475450130e18329b92c6b6463fb30c1",
+          "operatorLabel": "exec",
+          "operatorAddress": "0x99d765da09E24a017232dB28260391Fa4a656aF3",
+          "permissions": 1
+        },
+        {
+          "label": "payments-agent",
+          "nonce": "2",
+          "capabilityId": "0x020a39197d8e8692355f64a9a5b4b220ca36ecff5e1f39c8a1f513e540b2095f",
+          "operatorLabel": "exec",
+          "operatorAddress": "0x99d765da09E24a017232dB28260391Fa4a656aF3",
+          "permissions": 4
+        }
+      ]
+    },
+    {
+      "label": "savings",
+      "ensName": "savings.shlok.eth",
+      "bucketId": "0xf41b3bf9462083d640dd917242359d5e0ddced1e2a6a003339a4c9ef83586e12",
+      "holder": "0x04274c7bE78c3A0e7493122E12A97edC11c2eA9e",
+      "capabilities": [
+        {
+          "label": "trading-agent",
+          "nonce": "1",
+          "capabilityId": "0x79fce65123d422774a96a71d88509d6ef4c0abc1efbd220f8054ed56ebe81001",
+          "operatorLabel": "exec",
+          "operatorAddress": "0x99d765da09E24a017232dB28260391Fa4a656aF3",
+          "permissions": 1
+        }
+      ]
+    },
+    {
+      "label": "payments",
+      "ensName": "payments.shlok.eth",
+      "bucketId": "0x588b31d2ff427c76e5aa9c4da3852fa9f506784e7de5ab75299e9ca8e2f1010c",
+      "holder": "0x04274c7bE78c3A0e7493122E12A97edC11c2eA9e",
+      "capabilities": [
+        {
+          "label": "trading-agent",
+          "nonce": "1",
+          "capabilityId": "0x830fdecd6d3613f300fd0302fcdc908af6a1e3fbd03f6f3e650d91476b072728",
+          "operatorLabel": "exec",
+          "operatorAddress": "0x99d765da09E24a017232dB28260391Fa4a656aF3",
+          "permissions": 1
+        }
+      ]
+    }
+  ]
+}
