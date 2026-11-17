@@ -135,6 +135,22 @@ Inputs are **real** (on-chain prices + balances; session-observed σ), the visua
 
 ---
 
+## Legal & compliance (India)
+
+Testnet only today. For an India-facing mainnet the main exposures are **VDA tax** (30% under s.115BBH, 1% TDS under
+s.194S; every swap an agent makes is a taxable transfer), **PMLA/FIU-IND** status of anything that signs or administers
+on a user's behalf, GST on any future fee, and DPDP for personal data. How the design responds:
+
+- **Non-custodial by construction**: assets never leave the owner's wallet; no fees; no vault.
+- **The owner is the principal**: a capability is a machine-enforced mandate, so an agent can only act inside limits the
+  owner signed.
+- **Tax-ready records**: `GET /api/ledger.csv[?bucketId=]` exports every on-chain execution receipt, oldest first.
+- **No personal data on-chain**; ENS names are treated as personal data off-chain.
+- **Known gaps before mainnet** (hosted operator key, centralised price reporter, policy timelock): see
+  [`docs/COMPLIANCE_INDIA.md`](docs/COMPLIANCE_INDIA.md). *Not legal advice.*
+
+---
+
 ## Run it
 
 ```bash
