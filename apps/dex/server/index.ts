@@ -23,6 +23,7 @@ const { agentContext } = await import('../src/lib/server/context')
 const { buildAgentCard, buildAgentCards } = await import('../src/lib/server/agent-card')
 const { evmServer } = await import('../src/lib/server/evm')
 const { protocolEvents } = await import('../src/lib/server/indexer')
+const { ledgerCsv } = await import('../src/lib/server/ledger')
 const { redactRpc, sepoliaRpcUrls } = await import('../src/lib/server/rpc')
 const { onboardConfig, onboardFaucet } = await import('../src/lib/server/onboard')
 const { register, refreshPrices } = await import('../src/instrumentation')
@@ -72,6 +73,16 @@ app.post('/api/onboard/faucet', async (c) => {
 app.get('/api/activity', async (c) => {
   try {
     return c.json(await protocolEvents())
+  } catch (error) {
+    return c.json({ error: redactRpc(error instanceof Error ? error.message : String(error)) }, 502)
+  }
+})
+
+// --- Tax/audit ledger: one CSV row per on-chain execution receipt (public data only) ----------------------------
+app.get('/api/ledger.csv', async (c) => {
+  try {
+    const body = await ledgerCsv(c.req.query('bucketId'))
+    return c.body(body, 200, { 'content-type': 'text/csv; charset=utf-8', 'content-disposition': 'attachment; filename="bucket-ledger.csv"' })
   } catch (error) {
     return c.json({ error: redactRpc(error instanceof Error ? error.message : String(error)) }, 502)
   }
