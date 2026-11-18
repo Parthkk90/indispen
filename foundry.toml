@@ -1,0 +1,29 @@
+[profile.default]
+src = "contracts"
+out = "out"
+test = "test"
+script = "script"
+libs = ["node_modules", "lib"]
+solc_version = "0.8.30"
+evm_version = "prague"
+optimizer = true
+optimizer_runs = 1
+via_ir = true
+fs_permissions = [{ access = "read-write", path = "./deployments" }, { access = "read-write", path = "./packages/aquaindex-swapvm-sdk/test" }]
+remappings = [
+    "forge-std/=node_modules/forge-std/src/",
+    "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/",
+    "@1inch/solidity-utils/=node_modules/@1inch/solidity-utils/",
+    "@1inch/aqua/=lib/aqua/",
+    "@1inch/swap-vm/=lib/swap-vm/",
+]
+
+[rpc_endpoints]
+sepolia = "${SEPOLIA_RPC_URL}"
+local = "http://127.0.0.1:8545"
+
+[fmt]
+line_length = 120
+
+[lint]
+severity = ["high"]
