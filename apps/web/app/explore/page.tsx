@@ -30,7 +30,7 @@ export default function Explore() {
           <p className="mt-3 text-sm muted">On-chain constituents: {ix.holdings.filter((h: any) => !h.isCash).map((h: any) => `${h.symbol} (${pct(h.targetWeightBps)})`).join(', ')}</p>
         </Card>
       ))}
-      <Card title="Reference universe - 50 synthetic constituents (metadata only; first 5 are backed by mock receipt tokens)">
+      <Card title="Reference universe - Crypto Blue Chip 10 (metadata only; first 5 are backed by mock receipt tokens)">
         <div className="max-h-96 overflow-auto">
           <table className="t"><thead><tr><th>#</th><th>Ticker</th><th>Name</th><th>Sector</th><th>Ref. weight</th><th>On-chain</th></tr></thead>
             <tbody>{DEMO_CONSTITUENTS.map((c) => (

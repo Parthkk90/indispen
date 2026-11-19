@@ -39,7 +39,7 @@ export function Header() {
         </div>
       </div>
       <div className="bg-amber-500/10 px-4 py-1 text-center text-xs text-amber-200">
-        Synthetic demo data on Sepolia. Not a licensed Nifty 50 product. Tokens have no value. Unaudited.
+        Crypto Blue Chip demo index on Sepolia. Tokens have no value. Unaudited.
       </div>
     </header>
   )

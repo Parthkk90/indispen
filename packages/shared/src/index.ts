@@ -6,6 +6,6 @@ export type Deployment = typeof deployment
 export const STATUS = ['NONE', 'ACTIVE', 'PAUSED', 'RETIRED'] as const
 export const ASSET_SYMBOLS = ['mRELI', 'mTCS', 'mHDFC', 'mINFY', 'mICICI'] as const
 
-/** Synthetic demo constituents (NOT a licensed Nifty 50 product). First five are backed by mock receipt tokens. */
-export const DEMO_DISCLAIMER = 'Synthetic demo data on Sepolia. Not a licensed Nifty 50 product. Tokens have no value.'
+/** Crypto blue-chip reference constituents. First five are backed by mock receipt tokens. */
+export const DEMO_DISCLAIMER = 'Crypto Blue Chip demo index on Sepolia. Tokens have no value.'
 export * from './constituents'
