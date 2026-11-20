@@ -151,7 +151,7 @@ const base = (kind: StrategyKind, p: Partial<AquaIndexStrategyParams> & Pick<Aqu
 
 type Core = Pick<AquaIndexStrategyParams, 'maker' | 'navSource' | 'indexId' | 'indexToken' | 'quoteToken' | 'expiry' | 'salt'>
 
-/** Strategy A: NAV-anchored index market (I50D/USDC). */
+/** Strategy A: NAV-anchored index market (CB5/USDC). */
 export const strategyA = (c: Core, o: Partial<AquaIndexStrategyParams> = {}) => base(StrategyKind.NAV_ANCHORED, { ...c, ...o })
 
 /** Strategy B: conservative market maker (tight deviation, strict freshness, wide spread, small trades, less skew exposure). */

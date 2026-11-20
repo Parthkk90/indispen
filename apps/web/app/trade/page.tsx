@@ -77,7 +77,7 @@ export default function Trade() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold">Trading terminal <span className="muted text-base">I50D / mUSDC</span></h1>
+      <h1 className="text-2xl font-bold">Trading terminal <span className="muted text-base">CB5 / mUSDC</span></h1>
       <Loading q={strategies} />
       {live.length === 0 && !strategies.isLoading && <p className="muted">No live AquaIndex strategies. Ship one from the Market maker page.</p>}
       {strat && (
@@ -103,16 +103,16 @@ export default function Trade() {
           </div>
           <Card title="Swap">
             <div className="flex gap-2 mb-3">
-              <button className={side === 'buy' ? 'btn' : 'btn-ghost'} onClick={() => setSide('buy')}>Buy I50D</button>
-              <button className={side === 'sell' ? 'btn' : 'btn-ghost'} onClick={() => setSide('sell')}>Sell I50D</button>
+              <button className={side === 'buy' ? 'btn' : 'btn-ghost'} onClick={() => setSide('buy')}>Buy CB5</button>
+              <button className={side === 'sell' ? 'btn' : 'btn-ghost'} onClick={() => setSide('sell')}>Sell CB5</button>
             </div>
-            <label className="text-sm muted">Pay ({side === 'buy' ? 'mUSDC' : 'I50D'})</label>
+            <label className="text-sm muted">Pay ({side === 'buy' ? 'mUSDC' : 'CB5'})</label>
             <input className="input" value={amt} onChange={(e) => setAmt(e.target.value)} />
             {c && (
               <p className="mt-1 text-xs muted">
-                This strategy can fill about {maxPay.toLocaleString(undefined, { maximumFractionDigits: 2 })} {side === 'buy' ? 'mUSDC' : 'I50D'}{' '}
+                This strategy can fill about {maxPay.toLocaleString(undefined, { maximumFractionDigits: 2 })} {side === 'buy' ? 'mUSDC' : 'CB5'}{' '}
                 <button className="underline" onClick={() => setAmt(String(Math.floor(maxPay * 100) / 100))}>max</button>
-                {' '}(holds {c.sh.toLocaleString(undefined, { maximumFractionDigits: 2 })} I50D / {c.us.toLocaleString(undefined, { maximumFractionDigits: 0 })} mUSDC)
+                {' '}(holds {c.sh.toLocaleString(undefined, { maximumFractionDigits: 2 })} CB5 / {c.us.toLocaleString(undefined, { maximumFractionDigits: 0 })} mUSDC)
               </p>
             )}
             {overCap && <p className="mt-1 text-xs text-amber-300">Amount exceeds this strategy&apos;s liquidity. Pick another liquidity source or reduce the amount.</p>}
@@ -122,7 +122,7 @@ export default function Trade() {
               {quote.isLoading && <p className="muted">Quoting on-chain…</p>}
               {q?.ok && (
                 <>
-                  <div>You receive: <b>{num(q.amountOut, outDec, 6)}</b> {side === 'buy' ? 'I50D' : 'mUSDC'}</div>
+                  <div>You receive: <b>{num(q.amountOut, outDec, 6)}</b> {side === 'buy' ? 'CB5' : 'mUSDC'}</div>
                   <div>Min received: {num(minOut, outDec, 6)}</div>
                   <div>NAV reference: {q.navReferenceQuotePerShare ? usd((BigInt(Math.round(q.navReferenceQuotePerShare * 1e6)) * 10n ** 12n).toString(), 4) : '-'} / share</div>
                   <div>Premium / discount vs NAV: <Badge ok={Math.abs(q.premiumDiscountPct ?? 0) < 1}>{q.premiumDiscountPct?.toFixed(3)}%</Badge> <span className="muted text-xs">(spread + inventory skew)</span></div>
@@ -131,7 +131,7 @@ export default function Trade() {
               )}
               {q && !q.ok && (
                 <div className="text-rose-300">
-                  {/IndexSkewInsufficientLiquidity/.test(q.reverted) ? `Not enough liquidity: this strategy can fill at most about ${maxPay.toLocaleString(undefined, { maximumFractionDigits: 2 })} ${side === 'buy' ? 'mUSDC' : 'I50D'}. Reduce the amount or press "max".` : 'Blocked on-chain:'} <code>{q.reverted}</code>
+                  {/IndexSkewInsufficientLiquidity/.test(q.reverted) ? `Not enough liquidity: this strategy can fill at most about ${maxPay.toLocaleString(undefined, { maximumFractionDigits: 2 })} ${side === 'buy' ? 'mUSDC' : 'CB5'}. Reduce the amount or press "max".` : 'Blocked on-chain:'} <code>{q.reverted}</code>
                   {/IndexNavGuard(Deviation|Stale)/.test(q.reverted) && <p className="mt-1 text-xs">The published NAV no longer matches the index (share supply changed or snapshot is old). Republish NAV (Overview page, publisher wallet, or the keeper) and retry.</p>}
                 </div>
               )}

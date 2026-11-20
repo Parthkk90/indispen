@@ -61,7 +61,7 @@ export default function Maker() {
     const [a, b] = ix.data.share.toLowerCase() < D.usdc.toLowerCase() ? [ix.data.share, D.usdc] : [D.usdc, ix.data.share]
     const amounts = a.toLowerCase() === D.usdc.toLowerCase() ? [usdcRaw, shareRaw] : [shareRaw, usdcRaw]
     const steps: Parameters<typeof run>[0] = []
-    if ((aquaShareAllow.data ?? 0n) < shareRaw) steps.push({ label: 'Approve I50D to Aqua', req: { address: ix.data.share, abi: indexShareAbi, functionName: 'approve', args: [D.aqua, shareRaw] } })
+    if ((aquaShareAllow.data ?? 0n) < shareRaw) steps.push({ label: 'Approve CB5 to Aqua', req: { address: ix.data.share, abi: indexShareAbi, functionName: 'approve', args: [D.aqua, shareRaw] } })
     if ((aquaUsdcAllow.data ?? 0n) < usdcRaw) steps.push({ label: 'Approve mUSDC to Aqua', req: { address: D.usdc, abi: mockERC20Abi, functionName: 'approve', args: [D.aqua, usdcRaw] } })
     steps.push({ label: 'Ship strategy to Aqua', req: { address: D.aqua, abi: aquaAbi, functionName: 'ship', args: [D.router, encodeOrder(order), [a, b], amounts] } })
     if (await run(steps)) { mine.refetch(); setBuilt(null) }
@@ -85,10 +85,10 @@ export default function Maker() {
           ))}
         </div>
         <div className="mt-4 grid gap-3 md:grid-cols-2 text-sm">
-          <label><span className="muted">I50D to allocate (wallet {num(shareBal.data)})</span><input className="input" value={val('shareAmt')} onChange={(e) => set('shareAmt', e.target.value)} /></label>
+          <label><span className="muted">CB5 to allocate (wallet {num(shareBal.data)})</span><input className="input" value={val('shareAmt')} onChange={(e) => set('shareAmt', e.target.value)} /></label>
           <label><span className="muted">mUSDC to allocate</span><input className="input" value={val('usdcAmt')} onChange={(e) => set('usdcAmt', e.target.value)} /></label>
         </div>
-        <p className="mt-2 text-xs muted">Allocation value: {usd((parseFloat(val('shareAmt') || '0') * nps * 1e18).toLocaleString('fullwide', { useGrouping: false }))} I50D vs ${val('usdcAmt')} mUSDC. Aqua keeps tokens in your wallet; allocations are virtual until a trade settles.</p>
+        <p className="mt-2 text-xs muted">Allocation value: {usd((parseFloat(val('shareAmt') || '0') * nps * 1e18).toLocaleString('fullwide', { useGrouping: false }))} CB5 vs ${val('usdcAmt')} mUSDC. Aqua keeps tokens in your wallet; allocations are virtual until a trade settles.</p>
         <button className="btn mt-3" disabled={!ix.data} onClick={build}>Build via on-chain StrategyManager</button>
         {err && <p className="mt-2 text-rose-300 text-sm">{err}</p>}
       </Card>
@@ -106,7 +106,7 @@ export default function Maker() {
 
       <Card title="Your strategies - health and liquidity">
         {(mine.data ?? []).length === 0 ? <p className="muted">No strategies shipped by this wallet.</p> : (
-          <table className="t"><thead><tr><th>Hash</th><th>Status</th><th>Virtual I50D</th><th>Virtual mUSDC</th><th>Inventory (I50D %)</th><th>NAV max age</th><th>Trades</th><th /></tr></thead>
+          <table className="t"><thead><tr><th>Hash</th><th>Status</th><th>Virtual CB5</th><th>Virtual mUSDC</th><th>Inventory (CB5 %)</th><th>NAV max age</th><th>Trades</th><th /></tr></thead>
             <tbody>{mine.data!.map((s) => {
               const shareFirst = s.tokenA.toLowerCase() === ix.data?.share.toLowerCase()
               const sh = BigInt(shareFirst ? s.virtualBalances?.tokenA ?? 0 : s.virtualBalances?.tokenB ?? 0)

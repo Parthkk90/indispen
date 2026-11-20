@@ -1,7 +1,7 @@
 # AquaIndex
 
 Programmable index protocol on **1inch Aqua + a custom SwapVM router** with NAV-aware opcodes (0xe0–0xe4).
-All tokens are **synthetic mocks**; the "India 50 Demo Index" is not a licensed Nifty 50 product. Not audited.
+All tokens are **synthetic mocks**; the "Crypto Blue Chip 5" index uses mock tokens with no value. Not audited.
 
 ## Layout
 `contracts/index` (registry, vault, share, NAV oracle, subscription/redemption/rebalance) ·
@@ -12,7 +12,7 @@ All tokens are **synthetic mocks**; the "India 50 Demo Index" is not a licensed 
 ## Sepolia deployment (chain 11155111) - addresses in `deployments/11155111.json`
 Aqua is **self-deployed from upstream source** (no official Sepolia Aqua). Router `0x2Ff69110c092a1ebeC273Bc3dcaAE56cba9f6306`,
 Aqua `0x2F4C05E1b5408F0359f15b65F35ebEa6034C12b5`, Registry `0x687f20f332189d3C0F162c6f4A321248852B8830`,
-NAVOracle `0x6ee3F271bB8feE149aC2c7210Fe5EA4A32125630`, I50D share `0x63d9c18B13b352199094B0564447a8bbbA8793ff`,
+NAVOracle `0x6ee3F271bB8feE149aC2c7210Fe5EA4A32125630`, CB5 share `0x63d9c18B13b352199094B0564447a8bbbA8793ff`,
 Vault `0x76ae1BF6c7FF5FC842f1B263c5f7a17f8112ca22`. Contracts are not yet verified on Etherscan.
 
 ## Commands

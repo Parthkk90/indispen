@@ -2,7 +2,7 @@
  * Crypto Blue Chip reference universe (metadata only). Weights are approximate market-cap based.
  * Only the first five are backed on-chain by mock receipt tokens (Sepolia, no value).
  */
-const onChain = ['mRELI', 'mTCS', 'mHDFC', 'mINFY', 'mICICI']
+const onChain = ['mBTC', 'mETH', 'mSOL', 'mLINK', 'mUNI']
 
 export interface DemoConstituent {
   rank: number
