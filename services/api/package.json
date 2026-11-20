@@ -10,7 +10,8 @@
     "db:push": "prisma db push",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "keeper": "tsx src/keeper.ts"
+    "keeper": "tsx src/keeper.ts",
+    "feeder": "tsx src/price-feeder.ts"
   },
   "dependencies": {
     "@aquaindex/shared": "workspace:*",

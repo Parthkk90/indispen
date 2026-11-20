@@ -166,7 +166,7 @@ app.post('/api/strategy/build', async (req) => {
 })
 
 app.get('/api/prices', async () => {
-  const symbols = ['mRELI', 'mTCS', 'mHDFC', 'mINFY', 'mICICI', 'usdc']
+  const symbols = ['mBTC', 'mETH', 'mSOL', 'mLINK', 'mUNI', 'usdc']
   const { navOracleAbi } = await import('./abis-local')
   const out = await Promise.all(
     symbols.map(async (s) => {
