@@ -62,11 +62,11 @@ contract Demo is Script {
         c.share = IERC20(j.readAddress(".share"));
         c.vault = IndexVault(j.readAddress(".vault"));
         c.idx = uint64(j.readUint(".indexId"));
-        c.assets[0] = MockERC20(j.readAddress(".mRELI"));
-        c.assets[1] = MockERC20(j.readAddress(".mTCS"));
-        c.assets[2] = MockERC20(j.readAddress(".mHDFC"));
-        c.assets[3] = MockERC20(j.readAddress(".mINFY"));
-        c.assets[4] = MockERC20(j.readAddress(".mICICI"));
+        c.assets[0] = MockERC20(j.readAddress(".mBTC"));
+        c.assets[1] = MockERC20(j.readAddress(".mETH"));
+        c.assets[2] = MockERC20(j.readAddress(".mSOL"));
+        c.assets[3] = MockERC20(j.readAddress(".mLINK"));
+        c.assets[4] = MockERC20(j.readAddress(".mUNI"));
         c.maker = vm.addr(pk);
         c.taker = vm.addr(tk);
     }
@@ -181,7 +181,7 @@ contract Demo is Script {
 
         // 5 rebalance idle cash through Aqua XYC dealer strategies (maker doubles as dealer)
         vm.startBroadcast(pk);
-        uint256[5] memory px = [uint256(2500), 4000, 1600, 1500, 1100];
+        uint256[5] memory px = [uint256(90000), 3000, 150, 15, 8];
         c.usdc.approve(address(c.aqua), type(uint256).max);
         for (uint256 i; i < 5; ++i) {
             MockERC20 a = c.assets[i];
@@ -227,9 +227,9 @@ contract Demo is Script {
         console.log("swap executed, shares received", got);
         console.log("quote == swap", q1 == got);
 
-        // 8 NAV change: mRELI +20% -> republish -> changed quote
+        // 8 NAV change: mBTC +20% -> republish -> changed quote
         vm.startBroadcast(pk);
-        c.oracle.setPrice(address(c.assets[0]), 3000e18);
+        c.oracle.setPrice(address(c.assets[0]), 108000e18);
         c.oracle.publishNav(c.idx);
         vm.stopBroadcast();
         uint256 q2 = _quoteBuy(order, 1_000e6);

@@ -30,13 +30,13 @@ contract Deploy is Script {
         vm.startBroadcast(pk);
 
         MockERC20 usdc = new MockERC20("Mock USDC (synthetic)", "mUSDC", 6);
-        string[5] memory sy = ["mRELI", "mTCS", "mHDFC", "mINFY", "mICICI"];
-        uint256[5] memory px = [uint256(2500e18), 4000e18, 1600e18, 1500e18, 1100e18];
+        string[5] memory sy = ["mBTC", "mETH", "mSOL", "mLINK", "mUNI"];
+        uint256[5] memory px = [uint256(90000e18), 3000e18, 150e18, 15e18, 8e18];
         MockERC20[5] memory a;
         address[] memory c = new address[](5);
         uint16[] memory w = new uint16[](5);
         for (uint256 i; i < 5; ++i) {
-            a[i] = new MockERC20(string.concat(sy[i], " receipt (synthetic)"), sy[i], 18);
+            a[i] = new MockERC20(string.concat(sy[i], " (synthetic mock)"), sy[i], 18);
             c[i] = address(a[i]);
             w[i] = 2000;
         }
@@ -63,7 +63,7 @@ contract Deploy is Script {
         // demo oracle window: 24h so the testnet demo does not go stale between scripts
         oracle.setParams(24 hours, 5000);
         uint64 id = registry.createIndex(
-            "India 50 Demo Index", "I50D", "ipfs://aquaindex-demo (SYNTHETIC, not a licensed Nifty 50 product)", c, w, 100e18, 0, 0
+            "Crypto Blue Chip 5", "CB5", "ipfs://aquaindex-demo (SYNTHETIC mock tokens, no value)", c, w, 100e18, 0, 0
         );
         usdc.mint(deployer, 1_000_000e6);
         vm.stopBroadcast();
